@@ -11,7 +11,45 @@
 		function secondHighest(arr) {
 			//Write your code here
 			
+			if(arr.length===0 || arr.length===1){
+				return -Infinity;
+			}
+			checksame = check(arr) 
+			if(checksame){
+				return -Infinity;
+			}
+			
+			let highest=Number.MIN_SAFE_INTEGER;
+			for (let i=0;i<arr.length;i++){
+				if(arr[i]>highest){
+					highest=arr[i]; 
+				}
+				
+			}
+			
+			let second=Number.MIN_SAFE_INTEGER;
+			for(let i=0;i<arr.length;i++){
+				if(arr[i]>second&&arr[i]<highest){
+					second=arr[i];
+				}
+			}
+			return second;
+			
 		}
+		function check(arr){
+				let s=0;
+				let e=arr.length-1;
+				while(s<e){
+					if(arr[s]!=arr[e]){
+						return false;
+					}
+					
+					s++;
+					e--;
+				}
+				return true;
+			}
+		
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
@@ -26,7 +64,7 @@
 
     <script type="text/javascript" src="./script.js">
 </script>
-
+ 
 </body>
 
 </html>
